@@ -3,935 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexco - Premium Landing Page Generator</title>
+    <title>Minimal Premium | Sophisticated Design</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e90ff',
-                        secondary: '#1a1a1a',
-                        accent: '#d4af37',
-                        light: '#f5f5f5',
-                        dark: '#1a1a1a',
-                        success: '#22c55e',
-                        error: '#ef4444',
-                    },
-                    borderRadius: {
-                        'xl': '1rem',
-                        '2xl': '1.5rem',
-                    },
-                    boxShadow: {
-                        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        :root {
-            --radius: 16px;
-            --radius-lg: 24px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9ff;
-            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
         }
         
-        .font-playfair {
+        .playfair {
             font-family: 'Playfair Display', serif;
         }
         
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
+        .header-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
-        .bg-element {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(30, 144, 255, 0.03), rgba(30, 144, 255, 0.08));
-            animation: float 20s infinite linear;
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
         
-        @keyframes float {
-            0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0.3; }
-            25% { transform: translateX(100px) translateY(-100px) rotate(90deg); opacity: 0.8; }
-            50% { transform: translateX(200px) translateY(-50px) rotate(180deg); opacity: 0.5; }
-            75% { transform: translateX(50px) translateY(-150px) rotate(270deg); opacity: 0.7; }
-            100% { transform: translateX(0) translateY(0) rotate(360deg); opacity: 0.3; }
-        }
-        
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(30, 144, 255, 0.2);
-            border-radius: 50%;
-            animation: particleFloat 15s infinite linear;
-        }
-        
-        @keyframes particleFloat {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-        
-        .hero-gradient-text {
-            background: linear-gradient(135deg, #1a1a1a, #1e90ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .toggle-slider {
+        .form-step {
             transition: all 0.3s ease;
         }
         
-        .toggle.active .toggle-slider {
-            transform: translateX(28px);
+        .form-step:not(.active) {
+            display: none;
+            opacity: 0;
         }
         
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
         
-        .slide-up {
-            animation: slideUp 0.6s ease-out;
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e2e8f0;
+            transition: .4s;
+            border-radius: 34px;
         }
         
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
         }
         
-        .spinner {
-            border-top-color: #1e90ff;
-            animation: spin 1s linear infinite;
+        input:checked + .toggle-slider {
+            background-color: #2563eb;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+        
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .custom-checkbox:checked {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+        
+        .custom-checkbox:checked::after {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 12px;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .btn-copy {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-copy.copied {
+            background-color: #10b981;
         }
         
         .toast {
-            transform: translateX(400px);
-            transition: transform 0.4s ease;
+            animation: slideIn 0.3s forwards, fadeOut 0.3s 2.7s forwards;
         }
         
-        .toast.show {
-            transform: translateX(0);
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
         
         .lightbox {
-            display: none;
+            transition: opacity 0.3s ease;
         }
         
         .lightbox.active {
-            display: flex;
-        }
-        
-        .social-popup {
-            transform: translateX(400px);
-            transition: transform 0.4s ease;
-        }
-        
-        .social-popup.show {
-            transform: translateX(0);
-        }
-        
-        .collapsible-content {
-            display: none;
-        }
-        
-        .collapsible-content.active {
-            display: block;
-            animation: slideDown 0.4s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
-<body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="bg-element w-[200px] h-[200px] top-[10%] left-[10%] animation-delay-0 animation-duration-25s"></div>
-        <div class="bg-element w-[150px] h-[150px] top-[20%] right-[20%] animation-delay-5s animation-duration-30s"></div>
-        <div class="bg-element w-[300px] h-[300px] bottom-[10%] left-[20%] animation-delay-10s animation-duration-35s"></div>
-        <div class="bg-element w-[100px] h-[100px] top-[50%] left-[50%] animation-delay-15s animation-duration-20s"></div>
-        <div class="bg-element w-[250px] h-[250px] bottom-[20%] right-[10%] animation-delay-20s animation-duration-40s"></div>
-    </div>
-
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
-
+<body class="bg-gray-50 text-gray-700">
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-6">
-                <a href="#" class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-blue-700 rounded-xl flex items-center justify-center text-white text-xl">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <span class="font-playfair text-2xl font-bold">Nexco</span>
-                </a>
-                <nav class="hidden md:block">
-                    <ul class="flex items-center gap-8">
-                        <li><a href="#features" class="text-gray-600 font-medium hover:text-primary transition relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Features</a></li>
-                        <li><a href="#generator" class="text-gray-600 font-medium hover:text-primary transition relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Generator</a></li>
-                        <li><a href="#about" class="text-gray-600 font-medium hover:text-primary transition relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About</a></li>
-                        <li><a href="#contact" class="text-gray-600 font-medium hover:text-primary transition relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Contact</a></li>
-                    </ul>
-                </nav>
+    <header class="header-blur fixed w-full z-50 bg-white/80 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="playfair text-2xl font-bold text-gray-800">Minimal<span class="text-blue-600">Premium</span></h1>
             </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition">Home</a></li>
+                    <li><a href="#features" class="text-gray-600 hover:text-blue-600 transition">Features</a></li>
+                    <li><a href="#form" class="text-gray-600 hover:text-blue-600 transition">Form</a></li>
+                    <li><a href="#results" class="text-gray-600 hover:text-blue-600 transition">Results</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="py-24 text-center relative overflow-hidden">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full border border-primary/20 text-sm font-medium mb-8">
-                <i class="fas fa-sparkles"></i>
-                <span>AI-Powered Landing Page Generator</span>
-            </div>
-            
-            <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Create <span class="hero-gradient-text">Professional</span> Landing Pages in Minutes
-            </h1>
-            
-            <p class="text-gray-600 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Transform your ideas into conversion-optimized landing pages with our advanced AI technology. Professional, responsive, and ready to deploy.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#generator" class="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-blue-700 transition transform hover:-translate-y-1">
-                    <i class="fas fa-magic"></i>
-                    Start Creating Now
-                </a>
-                <a href="#features" class="flex items-center gap-3 bg-transparent text-gray-800 px-8 py-4 rounded-xl font-semibold border-2 border-gray-200 hover:border-primary hover:text-primary transition">
-                    <i class="fas fa-play"></i>
-                    See Features
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-12 bg-gray-50 my-16 rounded-2xl relative overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <h3 class="font-playfair text-3xl font-bold text-primary mb-2">10,000+</h3>
-                    <p class="text-gray-600 font-medium">Landing Pages Created</p>
-                </div>
-                <div>
-                    <h3 class="font-playfair text-3xl font-bold text-primary mb-2">95%</h3>
-                    <p class="text-gray-600 font-medium">Conversion Rate Increase</p>
-                </div>
-                <div>
-                    <h3 class="font-playfair text-3xl font-bold text-primary mb-2">24/7</h3>
-                    <p class="text-gray-600 font-medium">AI Support Available</p>
-                </div>
-                <div>
-                    <h3 class="font-playfair text-3xl font-bold text-primary mb-2">5-Star</h3>
-                    <p class="text-gray-600 font-medium">Customer Rating</p>
-                </div>
-            </div>
+    <section class="pt-32 pb-20 px-4">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h1 class="playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Sophisticated Design <br><span class="text-blue-600">Minimalist Approach</span></h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Experience premium quality with our clean, modern aesthetic that focuses on what truly matters - delivering exceptional value without distractions.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition transform hover:-translate-y-1">Get Started</button>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-                    Premium Features
-                </div>
-                <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-4">Everything You Need to Succeed</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                    Professional tools and features designed to create high-converting landing pages that drive results for your business.
-                </p>
-            </div>
+    <section id="features" class="py-20 bg-white px-4">
+        <div class="container mx-auto">
+            <h2 class="playfair text-3xl font-bold text-center mb-16 text-gray-800">Essential Features</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center transition-all hover:-translate-y-2 hover:shadow-xl relative overflow-hidden">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-blue-700 rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
-                        <i class="fas fa-brain"></i>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl card-hover transition">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-pen-nib text-blue-600 text-2xl"></i>
                     </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-4">AI-Powered Generation</h3>
-                    <p class="text-gray-600">
-                        Advanced artificial intelligence creates optimized prompts tailored to your specific product and target audience for maximum conversion potential.
-                    </p>
+                    <h3 class="playfair text-xl font-semibold mb-3 text-gray-800">Refined Typography</h3>
+                    <p class="text-gray-600">Carefully selected fonts that create visual hierarchy and enhance readability.</p>
                 </div>
                 
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center transition-all hover:-translate-y-2 hover:shadow-xl relative overflow-hidden">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-blue-700 rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
-                        <i class="fas fa-mobile-alt"></i>
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl card-hover transition">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-blue-600 text-2xl"></i>
                     </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-4">Fully Responsive Design</h3>
-                    <p class="text-gray-600">
-                        Every landing page is perfectly optimized for all devices - desktop, tablet, and mobile - ensuring seamless user experience across platforms.
-                    </p>
+                    <h3 class="playfair text-xl font-semibold mb-3 text-gray-800">Minimal Color Palette</h3>
+                    <p class="text-gray-600">Strategic use of color to guide attention without overwhelming the senses.</p>
                 </div>
                 
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center transition-all hover:-translate-y-2 hover:shadow-xl relative overflow-hidden">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-blue-700 rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-6">
-                        <i class="fas fa-chart-line"></i>
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl card-hover transition">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-screen text-blue-600 text-2xl"></i>
                     </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-4">Conversion Optimized</h3>
-                    <p class="text-gray-600">
-                        Built-in conversion optimization techniques including strategic CTA placement, social proof integration, and persuasive copywriting frameworks.
-                    </p>
+                    <h3 class="playfair text-xl font-semibold mb-3 text-gray-800">Responsive Design</h3>
+                    <p class="text-gray-600">Flawless experience across all devices with adaptive layouts and elements.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Form Section -->
-    <section id="generator" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-                    AI Generator
+    <section id="form" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="playfair text-3xl font-bold text-center mb-6 text-gray-800">Step-by-Step Form</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Our organized process ensures you provide only what's needed in a clear, logical sequence.</p>
+            
+            <!-- Form Steps Indicator -->
+            <div class="flex justify-center mb-12">
+                <div class="flex space-x-4">
+                    <button class="step-indicator active w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-medium">1</button>
+                    <button class="step-indicator w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-medium">2</button>
+                    <button class="step-indicator w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-medium">3</button>
+                    <button class="step-indicator w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-medium">4</button>
+                    <button class="step-indicator w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-medium">5</button>
                 </div>
-                <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-4">Generate Your Professional Landing Page</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                    Fill out the form below to create a custom AI prompt for your perfect landing page
-                </p>
             </div>
             
-            <div class="max-w-4xl mx-auto">
-                <!-- Step 1: Product Information -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">1</div>
-                        <h3 class="font-playfair text-xl font-semibold">Product Information</h3>
+            <!-- Form Steps -->
+            <form id="mainForm">
+                <!-- Step 1 -->
+                <div class="form-step active bg-white p-8 rounded-xl shadow-sm">
+                    <h3 class="playfair text-xl font-semibold mb-6 text-gray-800">Personal Information</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name *</label>
+                            <input type="text" id="firstName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" required>
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
+                            <input type="text" id="lastName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" required>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
+                        </div>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex justify-between mt-10">
+                        <button type="button" class="text-gray-600 font-medium">Cancel</button>
+                        <button type="button" class="next-step bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">Next</button>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="form-step bg-white p-8 rounded-xl shadow-sm">
+                    <h3 class="playfair text-xl font-semibold mb-6 text-gray-800">Business Details</h3>
+                    
+                    <div class="space-y-6">
                         <div>
-                            <label class="block text-gray-800 font-medium mb-2">Product Name <span class="text-red-500">*</span></label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Premium Silk Hijab">
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company Name *</label>
+                            <input type="text" id="company" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" required>
                         </div>
-                        
                         <div>
-                            <label class="block text-gray-800 font-medium mb-2">Product Category <span class="text-red-500">*</span></label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Select Category</option>
-                                <option value="fashion">Fashion & Clothing</option>
-                                <option value="hijab">Hijab & Muslim Wear</option>
-                                <option value="electronics">Electronics & Gadgets</option>
-                                <option value="beauty">Beauty & Skincare</option>
-                                <option value="food">Food & Beverages</option>
-                                <option value="home">Home & Decor</option>
-                                <option value="sports">Sports & Fitness</option>
-                                <option value="digital">Digital Products</option>
-                                <option value="services">Services</option>
+                            <label for="industry" class="block text-sm font-medium text-gray-700 mb-1">Industry *</label>
+                            <select id="industry" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" required>
+                                <option value="">Select your industry</option>
+                                <option value="tech">Technology</option>
+                                <option value="finance">Finance</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="retail">Retail</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-                        
                         <div>
-                            <label class="block text-gray-800 font-medium mb-2">Original Price <span class="text-red-500">*</span></label>
-                            <input type="number" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="299000">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Discount Price</label>
-                            <input type="number" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="199000">
-                        </div>
-                        
-                        <div class="md:col-span-2">
-                            <label class="block text-gray-800 font-medium mb-2">Product Description <span class="text-red-500">*</span></label>
-                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[120px]" placeholder="Describe your product in detail - features, benefits, materials, etc."></textarea>
+                            <label for="website" class="block text-sm font-medium text-gray-700 mb-1">Website URL</label>
+                            <input type="url" id="website" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="https://">
                         </div>
                     </div>
                     
-                    <!-- Hijab Specific Options -->
-                    <div class="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-6 hidden" id="hijabSection">
-                        <h4 class="font-playfair text-lg font-semibold mb-6">🧕 Hijab Specifications</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Hijab Color</label>
-                                <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    <option value="">Select Color</option>
-                                    <option value="black">Black</option>
-                                    <option value="white">White</option>
-                                    <option value="navy">Navy Blue</option>
-                                    <option value="brown">Brown</option>
-                                    <option value="grey">Grey</option>
-                                    <option value="custom">Custom Colors</option>
-                                </select>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Hijab Style</label>
-                                <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    <option value="">Select Style</option>
-                                    <option value="pashmina">Pashmina</option>
-                                    <option value="square">Square Hijab</option>
-                                    <option value="bergo">Bergo</option>
-                                    <option value="khimar">Khimar</option>
-                                    <option value="sport">Sport Hijab</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="flex justify-between mt-10">
+                        <button type="button" class="prev-step text-gray-600 font-medium">Back</button>
+                        <button type="button" class="next-step bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">Next</button>
                     </div>
                 </div>
                 
-                <!-- Step 2: Media & Visuals -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">2</div>
-                        <h3 class="font-playfair text-xl font-semibold">Media & Visuals</h3>
-                    </div>
+                <!-- Step 3 -->
+                <div class="form-step bg-white p-8 rounded-xl shadow-sm">
+                    <h3 class="playfair text-xl font-semibold mb-6 text-gray-800">Preferences</h3>
                     
-                    <div class="grid grid-cols-1 gap-6">
+                    <div class="space-y-6">
                         <div>
-                            <label class="block text-gray-800 font-medium mb-2">Main Product Image URL <span class="text-red-500">*</span></label>
-                            <input type="url" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="https://example.com/product-image.jpg">
-                            <p class="text-gray-500 text-sm mt-2">High-quality image showcasing your product (recommended: 1200x800px)</p>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Video Demo URL</label>
-                            <input type="url" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="https://youtube.com/watch?v=...">
-                            <p class="text-gray-500 text-sm mt-2">YouTube, Vimeo, or direct video link</p>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Product Gallery URLs</label>
-                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[120px]" placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg&#10;https://example.com/image3.jpg"></textarea>
-                            <p class="text-gray-500 text-sm mt-2">One URL per line for additional product images</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Step 3: OrderOnline Integration -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">3</div>
-                        <h3 class="font-playfair text-xl font-semibold">OrderOnline Integration</h3>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 gap-6">
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">OrderOnline Embed Code <span class="text-red-500">*</span></label>
-                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[120px] font-mono text-sm" placeholder="<script src='https://orderonline.id/embed/...'></script>"></textarea>
-                            <p class="text-gray-500 text-sm mt-2 flex items-center gap-1"><i class="fas fa-info-circle text-primary"></i> Copy the complete embed code from your OrderOnline.id dashboard</p>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Store/Brand Name <span class="text-red-500">*</span></label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Premium Fashion Store">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">WhatsApp Number <span class="text-red-500">*</span></label>
-                                <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="628123456789">
-                                <p class="text-gray-500 text-sm mt-2">Include country code (e.g., 628123456789)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Step 4: Design & Typography -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">4</div>
-                        <h3 class="font-playfair text-xl font-semibold">Design & Typography</h3>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Color Scheme <span class="text-red-500">*</span></label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Select Color Scheme</option>
-                                <option value="luxury">✨ Luxury Black & Gold</option>
-                                <option value="ocean">🌊 Ocean Blue & White</option>
-                                <option value="royal">👑 Royal Purple & Silver</option>
-                                <option value="sunset">🌅 Sunset Orange & Coral</option>
-                                <option value="mono">⚫ Monochrome Elegance</option>
-                                <option value="rose">🌹 Rose Gold & Blush</option>
-                                <option value="emerald">💎 Emerald Green & Gold</option>
-                                <option value="sapphire">💙 Sapphire Blue & Platinum</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Layout Style <span class="text-red-500">*</span></label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Select Layout Style</option>
-                                <option value="premium">💎 Ultra Premium Luxury</option>
-                                <option value="minimalist">⚡ Modern Minimalist</option>
-                                <option value="islamic">🕌 Islamic Elegant</option>
-                                <option value="ecommerce">🛒 E-commerce Professional</option>
-                                <option value="fashion">👗 Fashion Forward</option>
-                                <option value="tech">💻 Technology & Digital</option>
-                                <option value="boutique">🏬 Boutique Exclusive</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Heading Font <span class="text-red-500">*</span></label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Select Heading Font</option>
-                                <option value="playfair">Playfair Display (Elegant Serif)</option>
-                                <option value="poppins">Poppins (Modern Sans-Serif)</option>
-                                <option value="cormorant">Cormorant Garamond (Classic Serif)</option>
-                                <option value="lato">Lato (Clean Sans-Serif)</option>
-                                <option value="georgia">Georgia (Traditional Serif)</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Body Font <span class="text-red-500">*</span></label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                <option value="">Select Body Font</option>
-                                <option value="inter">Inter (Premium Sans-Serif)</option>
-                                <option value="roboto">Roboto (Google Sans-Serif)</option>
-                                <option value="opensans">Open Sans (Friendly Sans-Serif)</option>
-                                <option value="source">Source Sans Pro (Adobe Sans-Serif)</option>
-                                <option value="segoe">Segoe UI (Microsoft Sans-Serif)</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Step 5: Customer Testimonials -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">5</div>
-                        <h3 class="font-playfair text-xl font-semibold">Customer Testimonials</h3>
-                    </div>
-                    
-                    <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
-                        <label class="text-gray-800 font-semibold">Enable Customer Testimonials (Shopee Style)</label>
-                        <div class="relative w-14 h-7 bg-gray-300 rounded-full cursor-pointer" id="testimoniToggle">
-                            <div class="toggle-slider absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transition"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 hidden" id="testimoniSection">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Section Title</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="💬 Customer Reviews">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Overall Rating Display</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="4.9/5.0 (1.2k reviews)">
-                            </div>
-                        </div>
-                        
-                        <!-- Testimonials -->
-                        <div id="testimoniFields">
-                            <!-- Testimonial 1 -->
-                            <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
-                                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-200">
-                                    <div class="w-7 h-7 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-semibold">1</div>
-                                    <h4 class="font-semibold">Customer Testimonial 1</h4>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Customer Name</label>
-                                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Sarah K.">
-                                    </div>
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Profile Photo URL</label>
-                                        <input type="url" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="https://example.com/avatar1.jpg">
-                                    </div>
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Review Media URL</label>
-                                        <input type="url" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="https://example.com/review1.jpg">
-                                    </div>
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Time Posted</label>
-                                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="2 days ago">
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label class="block text-gray-800 font-medium mb-2">Customer Review</label>
-                                        <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[100px]" placeholder="Amazing product! Great quality and fast shipping. Highly recommended!"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Testimonial 2 -->
-                            <div class="bg-white border border-gray-200 rounded-xl p-6 mb-6">
-                                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-200">
-                                    <div class="w-7 h-7 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-semibold">2</div>
-                                    <h4 class="font-semibold">Customer Testimonial 2</h4>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Customer Name</label>
-                                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Maya R.">
-                                    </div>
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Profile Photo URL</label>
-                                        <input type="url" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="https://example.com/avatar2.jpg">
-                                    </div>
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Review Media URL</label>
-                                        <input type="url" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="https://example.com/review2.jpg">
-                                    </div>
-                                    <div>
-                                        <label class="block text-gray-800 font-medium mb-2">Time Posted</label>
-                                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="1 week ago">
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label class="block text-gray-800 font-medium mb-2">Customer Review</label>
-                                        <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[100px]" placeholder="Love the material and design. Perfect fit and excellent quality!"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Step 6: Social Proof System -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">6</div>
-                        <h3 class="font-playfair text-xl font-semibold">Social Proof System</h3>
-                    </div>
-                    
-                    <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
-                        <label class="text-gray-800 font-semibold">Enable Real-Time Purchase Notifications</label>
-                        <div class="relative w-14 h-7 bg-gray-300 rounded-full cursor-pointer" id="socialProofToggle">
-                            <div class="toggle-slider absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transition"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 hidden" id="socialProofSection">
-                        <p class="text-gray-600 mb-8 text-sm leading-relaxed flex items-start gap-2">
-                            <i class="fas fa-info-circle text-primary mt-1"></i>
-                            Show real-time customer purchase notifications to build trust and create urgency for visitors.
-                        </p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Popup Interval (seconds)</label>
-                                <input type="number" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="8" min="5" max="30">
-                                <p class="text-gray-500 text-sm mt-2">How often notifications appear (recommended: 8-12 seconds)</p>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Display Duration (seconds)</label>
-                                <input type="number" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="5" min="3" max="10">
-                                <p class="text-gray-500 text-sm mt-2">How long each notification stays visible</p>
-                            </div>
-                            
-                            <div class="md:col-span-2">
-                                <label class="block text-gray-800 font-medium mb-2">Customer Names (comma separated)</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="Sarah, Maya, Dina, Fitri, Sari, Rina, Dewi, Lestari, Putri, Indira">
-                                <p class="text-gray-500 text-sm mt-2">Names that will appear in notifications</p>
-                            </div>
-                            
-                            <div class="md:col-span-2">
-                                <label class="block text-gray-800 font-medium mb-2">Cities (comma separated)</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="Jakarta, Surabaya, Bandung, Medan, Bekasi, Tangerang, Depok, Semarang, Palembang, Makassar">
-                                <p class="text-gray-500 text-sm mt-2">Cities that will appear in notifications</p>
-                            </div>
-                            
-                            <div class="md:col-span-2">
-                                <label class="block text-gray-800 font-medium mb-2">Customer Avatar URLs (one per line)</label>
-                                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[100px]" placeholder="https://example.com/avatar1.jpg&#10;https://example.com/avatar2.jpg&#10;https://example.com/avatar3.jpg"></textarea>
-                                <p class="text-gray-500 text-sm mt-2">Profile photos for the notifications (optional but recommended)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Step 7: Product Recommendations -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">7</div>
-                        <h3 class="font-playfair text-xl font-semibold">Product Recommendations</h3>
-                    </div>
-                    
-                    <div class="flex items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
-                        <label class="text-gray-800 font-semibold">Enable "You May Also Like" Section</label>
-                        <div class="relative w-14 h-7 bg-gray-300 rounded-full cursor-pointer" id="recommendationToggle">
-                            <div class="toggle-slider absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transition"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 hidden" id="recommendationsSection">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Section Title</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="🛍️ You May Also Like">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-800 font-medium mb-2">Number of Products</label>
-                                <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    <option value="3">3 Products</option>
-                                    <option value="4">4 Products</option>
-                                    <option value="6">6 Products</option>
-                                    <option value="8">8 Products</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div id="productFields"></div>
-                    </div>
-                </div>
-                
-                <!-- Step 8: Marketing & Target -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6 fade-in">
-                    <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                        <div class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center font-bold">8</div>
-                        <h3 class="font-playfair text-xl font-semibold">Marketing & Target Audience</h3>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 gap-6">
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Target Audience <span class="text-red-500">*</span></label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Muslim women aged 20-35, modern and active lifestyle, value quality and style">
-                            <p class="text-gray-500 text-sm mt-2">Describe your ideal customer demographics, interests, and behaviors</p>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Unique Selling Point <span class="text-red-500">*</span></label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Premium silk material with cooling technology for all-day comfort and elegant style">
-                            <p class="text-gray-500 text-sm mt-2">What makes your product unique and better than competitors?</p>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-800 font-medium mb-2">Additional Requirements</label>
-                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[120px]" placeholder="Any specific requirements, special features, or customization requests..."></textarea>
-                            <p class="text-gray-500 text-sm mt-2">Optional: Any special instructions or specific features you want included</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Generate Button -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 mb-6 text-center relative overflow-hidden">
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-blue-700 to-primary"></div>
-                    <h3 class="font-playfair text-xl font-semibold mb-4">Ready to Create Your Landing Page?</h3>
-                    <p class="text-gray-600 mb-8">Generate your professional AI prompt and start building your conversion-optimized landing page</p>
-                    
-                    <button class="flex items-center gap-3 bg-gradient-to-br from-primary to-blue-700 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1">
-                        <i class="fas fa-rocket"></i>
-                        <span>Generate Professional Landing Page</span>
-                    </button>
-                </div>
-                
-                <!-- Loading State -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 mb-6 text-center hidden" id="loadingState">
-                    <div class="w-12 h-12 border-4 border-gray-300 border-t-primary rounded-full mx-auto mb-4 spinner"></div>
-                    <div class="text-gray-600 font-medium mb-2">Creating your professional prompt...</div>
-                    <p class="text-gray-500 text-sm">This may take a few moments</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Result Section -->
-    <section class="py-20 bg-gray-50 hidden" id="resultSection">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <i class="fas fa-check-circle text-success text-5xl mb-6"></i>
-                <h2 class="font-playfair text-3xl font-bold mb-4">Your Professional Prompt is Ready!</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                    Copy the generated prompt and paste it into Claude, ChatGPT, or your preferred AI tool to create your landing page
-                </p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto bg-gray-800 rounded-2xl overflow-hidden shadow-xl">
-                <div class="bg-gray-900 px-6 py-4 flex items-center justify-between border-b border-gray-700">
-                    <div class="flex items-center gap-2 text-gray-200 font-semibold">
-                        <i class="fas fa-file-code"></i>
-                        Professional Landing Page Prompt
-                    </div>
-                    <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        <i class="far fa-copy"></i>
-                        <span>Copy Prompt</span>
-                    </button>
-                </div>
-                <div class="p-6 text-gray-200 font-mono text-sm overflow-y-auto max-h-96" id="promptContent"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center transition-all hover:-translate-y-2 hover:shadow-xl">
-                    <div class="w-14 h-14 bg-primary text-white rounded-xl flex items-center justify-center text-xl mx-auto mb-6">
-                        <i class="fas fa-copy"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-4">Step 1: Copy</h3>
-                    <p class="text-gray-600">
-                        Click the copy button above to copy your custom AI prompt to your clipboard
-                    </p>
-                </div>
-                
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center transition-all hover:-translate-y-2 hover:shadow-xl">
-                    <div class="w-14 h-14 bg-primary text-white rounded-xl flex items-center justify-center text-xl mx-auto mb-6">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-4">Step 2: Open AI Tool</h3>
-                    <p class="text-gray-600">
-                        Navigate to Claude.ai, ChatGPT, or your preferred AI assistant platform
-                    </p>
-                </div>
-                
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center transition-all hover:-translate-y-2 hover:shadow-xl">
-                    <div class="w-14 h-14 bg-primary text-white rounded-xl flex items-center justify-center text-xl mx-auto mb-6">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-4">Step 3: Generate</h3>
-                    <p class="text-gray-600">
-                        Paste the prompt and let AI create your professional, conversion-optimized landing page
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox for Images -->
-    <div class="fixed inset-0 bg-black/95 flex items-center justify-center z-50 hidden" id="lightbox">
-        <div class="relative max-w-4xl w-full">
-            <button class="absolute -top-12 right-0 bg-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center text-2xl hover:bg-gray-200 transition">×</button>
-            <img id="lightbox-image" src="" alt="Preview" class="w-full rounded-2xl shadow-2xl">
-        </div>
-    </div>
-
-    <!-- Social Proof Popup -->
-    <div class="fixed bottom-8 right-8 bg-white p-5 rounded-2xl border border-gray-200 shadow-xl max-w-xs hidden" id="socialPopup">
-        <div class="flex items-center gap-4">
-            <img id="popupAvatar" src="" alt="Customer" class="w-10 h-10 rounded-full border-2 border-gray-200">
-            <div class="flex-1">
-                <div class="font-medium" id="popupText"></div>
-                <div class="text-gray-500 text-sm">Just now</div>
-            </div>
-            <button class="text-gray-500 hover:text-gray-800 text-xl">×</button>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div class="fixed bottom-8 right-8 bg-gray-800 text-white px-6 py-4 rounded-xl flex items-center gap-3 shadow-xl z-50 hidden" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">Success!</span>
-    </div>
-
-    <script>
-        // State Management
-        let customColors = [];
-        let socialProofInterval;
-        let particleCount = 0;
-
-        // Font Combinations Mapping
-        const fontCombinations = {
-            'playfair': 'Playfair Display',
-            'poppins': 'Poppins',
-            'cormorant': 'Cormorant Garamond',
-            'lato': 'Lato',
-            'georgia': 'Georgia',
-            'inter': 'Inter',
-            'roboto': 'Roboto',
-            'opensans': 'Open Sans',
-            'source': 'Source Sans Pro',
-            'segoe': 'Segoe UI'
-        };
-
-        // Initialize particles
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            
-            setInterval(() => {
-                if (particleCount < 15) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                    particle.style.animationDelay = Math.random() * 2 + 's';
-                    
-                    particles.appendChild(particle);
-                    particleCount++;
-                    
-                    setTimeout(() => {
-                        if (particle.parentNode) {
-                            particle.parentNode.removeChild(particle);
-                            particleCount--;
-                        }
-                    }, 17000);
-                }
-            }, 2000);
-        }
-
-        // Category change handler
-        document.getElementById('productCategory').addEventListener('change', function() {
-            const hijabSection = document.getElementById('hijabSection');
-            if (this.value === 'hijab') {
-                hijabSection.classList.remove('hidden');
-            } else {
-                hijabSection.classList.add('hidden');
-            }
-        });
-
-        // Toggle Functions
-        function toggleTestimoni() {
-            const toggle = document.getElementById('testimoniToggle');
-            const section = document.getElementById('testimoniSection');
-            
-            toggle.classList.toggle('bg-primary');
-            section.classList.toggle('hidden');
-        }
-
-        function toggleSocialProof() {
-            const toggle = document.getElementById('socialProofToggle');
-            const section = document.getElementById('socialProofSection');
-            
-            toggle.classList.toggle('bg-primary');
-            section.classList.toggle('hidden');
-            
-            if (toggle.classList.contains('bg-primary')) {
-                startSocialProofDemo();
-            } else {
-                stopSocialProofDemo();
-            }
-        }
-
-        function toggleRecommendations() {
-            const toggle = document.getElementById('recommendationToggle');
-            const section = document.getElementById('recommendationsSection');
-            
-            toggle.classList.toggle('bg-primary');
-            section.classList.toggle('hidden');
-            
-            if (toggle.classList.contains('bg-primary')) {
-                generateProductFields();
-            }
-        }
-
-        // Social Proof Demo
-        function startSocialProofDemo() {
-            const names = ['Sarah', 'Maya', 'Dina', 'Fitri', 'Sari'];
-            const cities = ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Bekasi'];
-            const avatars = [
-                'https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face',
-                'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-                'https://images.unsplash.com/photo-147209964578
+                            <h4 class="text-sm font-medium text-gray-700 mb-3">Design Style</h4>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="designStyle" value="minimal" class="h-4 w-4 text-blue-600 focus:ring-blue-500" checked>
+                                    <span class="text-gray-700">Minimal</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer
 </body>
 </html>
