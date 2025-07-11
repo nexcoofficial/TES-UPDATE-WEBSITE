@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Landing Page Generator - Luxury Edition</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Root Variables - New Color Palette */
+        :root {
+            --background: #ffffff;
+            --primary-text: #1a1a1a;
+            --accent-button: #1e90ff;
+            --card-box: #f5f5f5;
+            --shadow-border: #dcdcdc;
+            --white: #ffffff;
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --gradient-primary: linear-gradient(135deg, #1e90ff 0%, #187bcd 100%);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-text);
+            background: var(--background);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-content {
+            font-family: 'Inter', 'SF Mono', 'Roboto Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 1.5rem;
+            color: var(--platinum);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Premium Background Patterns */
+        .luxury-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(116, 75, 162, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--background);
+            overflow: hidden;
+            border-bottom: 1px solid var(--shadow-border);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(201,169,110,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--platinum) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 30px rgba(201, 169, 110, 0.5);
+            animation: fadeInUp 1s ease-out;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--platinum);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: both;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 4rem;
+            background: var(--accent-button);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 
+                0 20px 60px rgba(30, 144, 255, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 30px 80px rgba(102, 126, 234, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite;
+            font-size: 2.5rem;
+        }
+
+        .element1 { top: 15%; left: 10%; color: var(--gold); animation-delay: 0s; }
+        .element2 { top: 25%; right: 15%; color: var(--accent-blue); animation-delay: 2s; }
+        .element3 { bottom: 35%; left: 20%; color: var(--accent-purple); animation-delay: 4s; }
+        .element4 { bottom: 25%; right: 10%; color: var(--accent-rose); animation-delay: 6s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(15deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--pearl) 100%);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="1" fill="rgba(0,0,0,0.02)"/><circle cx="75" cy="75" r="1" fill="rgba(0,0,0,0.02)"/><circle cx="50" cy="10" r="1" fill="rgba(0,0,0,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--primary-text);
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--slate);
+            margin-bottom: 4rem;
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-box);
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.04),
+                0 0 0 1px var(--shadow-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 
+                0 40px 100px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.75rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .feature-card p {
+            color: var(--slate);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Main Form Section */
+        .form-section {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--pearl) 0%, var(--white) 50%, var(--pearl) 100%);
+            position: relative;
+        }
+
+        .luxury-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.3;
+        }
+
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-section-wrapper {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .section-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', 'Poppins', 'Cormorant Garamond', 'Lato', 'Georgia', serif;
+        }
+
+        .section-info h3 {
+            font-size: 2rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', 'Poppins', 'Cormorant Garamond', 'Lato', 'Georgia', serif;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Premium Glass Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+            opacity: 0.8;
+        }
+
+        /* Form Elements */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .required {
+            color: var(--accent-rose);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+            border: 2px solid var(--shadow-border);
+            border-radius: 20px;
+            background: var(--white);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            color: var(--primary-text);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 
+                0 0 0 4px rgba(74, 144, 226, 0.15),
+                0 10px 30px rgba(74, 144, 226, 0.1);
+            transform: translateY(-2px);
+            background: var(--white);
+        }
+
+        /* Hijab Section */
+        .hijab-section {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05), rgba(108, 92, 231, 0.05));
+            border: 2px solid rgba(74, 144, 226, 0.2);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hijab-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .hijab-section.active {
+            display: block;
+            animation: slideDown 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hijab-title {
+            font-size: 1.75rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Custom Color Container */
+        .custom-color-container {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px);
+        }
+
+        .custom-color-container.active {
+            display: block;
+        }
+
+        .color-input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .add-color-btn {
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+        }
+
+        .add-color-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.4);
+        }
+
+        .color-list {
+            margin-top: 1.5rem;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .color-preview {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            border: 2px solid var(--platinum);
+            margin-right: 1.5rem;
+        }
+
+        .color-info {
+            flex: 1;
+        }
+
+        .color-name {
+            font-weight: 600;
+            color: var(--charcoal);
+            font-size: 1.1rem;
+        }
+
+        .color-image-url {
+            font-size: 0.9rem;
+            color: var(--slate);
+            word-break: break-all;
+        }
+
+        .remove-color-btn {
+            padding: 0.75rem;
+            background: var(--gradient-gold);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .remove-color-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            margin-top: 2.5rem;
+            padding: 2.5rem;
+            background: rgba(201, 169, 110, 0.05);
+            border-radius: 25px;
+            border: 2px solid rgba(201, 169, 110, 0.3);
+            display: none;
+            position: relative;
+        }
+
+        .recommendations-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--accent-rose) 100%);
+        }
+
+        .recommendations-section.active {
+            display: block;
+        }
+
+        .toggle-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .toggle-label {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 70px;
+            height: 35px;
+            background: var(--platinum);
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .toggle-switch.active {
+            background: var(--gradient-primary);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 29px;
+            height: 29px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(35px);
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .product-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--platinum);
+        }
+
+        .product-number {
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.1rem;
+        }
+
+        /* Generate Button */
+        .generate-section {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .generate-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 5rem;
+            background: var(--accent-button);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 
+                0 20px 60px rgba(30, 144, 255, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.02em;
+            font-weight: 600;
+        }
+
+        .generate-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .generate-button:hover::before {
+            left: 100%;
+        }
+
+        .generate-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 30px 100px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .generate-button:active {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .generate-button i {
+            font-size: 1.8rem;
+        }
+
+        /* Result Section */
+        .result-section {
+            display: none;
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--pearl) 100%);
+        }
+
+        .result-section.active {
+            display: block;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .result-header h2 {
+            font-size: 3rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .prompt-output {
+            background: var(--card-box);
+            border: 2px solid var(--shadow-border);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            margin-bottom: 3rem;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.04);
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+        }
+
+        .copy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.4);
+        }
+
+        .copy-button.copied {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .prompt-content {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 1.5rem;
+            color: var(--platinum);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        .prompt-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .prompt-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .prompt-content::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+
+        /* Instructions */
+        .instructions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .instruction-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instruction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .instruction-icon {
+            font-size: 3.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .instruction-card h3 {
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .instruction-card p {
+            color: var(--slate);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Loading State */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(74, 144, 226, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading p {
+            margin-top: 1.5rem;
+            color: var(--slate);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1.5rem 2.5rem;
+            background: var(--charcoal);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast i {
+            margin-right: 0.75rem;
+            color: var(--gold);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .testimonial-rating {
+            color: #FFB800;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: var(--slate);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-media {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .testimonial-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .testimonial-thumbnail:hover {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-date {
+            font-size: 0.75rem;
+            color: var(--slate);
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.25rem;
+            }
+            
+            .section-number {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .generate-button {
+                padding: 1.5rem 3rem;
+                font-size: 1.2rem;
+            }
+            
+            .glass-card {
+                padding: 2rem;
+            }
+            
+            input, select, textarea {
+                padding: 1rem 1rem 1rem 3rem;
+            }
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .instructions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Additional Premium Effects */
+        .glow-effect {
+            box-shadow: 
+                0 0 20px rgba(74, 144, 226, 0.3),
+                0 0 40px rgba(74, 144, 226, 0.1),
+                0 0 60px rgba(74, 144, 226, 0.05);
+        }
+
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection Styling */
+        ::selection {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* Focus Visible */
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="luxury-pattern"></div>
+        
+        <span class="floating-element element1">✨</span>
+        <span class="floating-element element2">💎</span>
+        <span class="floating-element element3">🎯</span>
+        <span class="floating-element element4">🚀</span>
+        
+        <div class="hero-content">
+            <h1>Premium Landing Page Generator</h1>
+            <p>Buat landing page profesional yang conversion-optimized dengan AI generator terdepan</p>
+            <a href="#generator" class="cta-button">
+                <i class="fas fa-magic"></i>
+                <span>Mulai Membuat Sekarang</span>
+            </a>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Fitur Unggulan</h2>
+            <p class="section-subtitle">Teknologi AI terdepan untuk landing page yang sempurna</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered</h3>
+                    <p>Generate prompt berkualitas tinggi dengan teknologi AI terkini untuk hasil yang optimal dan profesional</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Fully Responsive</h3>
+                    <p>Landing page sempurna di semua perangkat dan ukuran layar dengan desain yang adaptif</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Conversion Optimized</h3>
+                    <p>Dioptimalkan untuk konversi maksimal dan ROI terbaik dengan strategi proven</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Form Section -->
+    <section class="form-section" id="generator">
+        <div class="luxury-pattern"></div>
+        
+        <div class="form-container">
+            <h2 class="section-title">Generate Landing Page Anda</h2>
+            <p class="section-subtitle">Isi form di bawah untuk menghasilkan prompt AI yang sempurna</p>
+
+            <!-- Section 1: Product Information -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">01</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-box section-icon"></i> Informasi Produk</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Nama Produk <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-tag input-icon"></i>
+                                <input type="text" id="productName" placeholder="Contoh: Hijab Premium Silk">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Kategori Produk <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-list input-icon"></i>
+                                <select id="productCategory">
+                                    <option value="">Pilih Kategori</option>
+                                    <option value="fashion">Fashion & Pakaian</option>
+                                    <option value="hijab">Hijab & Busana Muslim</option>
+                                    <option value="elektronik">Elektronik & Gadget</option>
+                                    <option value="kecantikan">Kecantikan & Skincare</option>
+                                    <option value="makanan">Makanan & Minuman</option>
+                                    <option value="rumah">Rumah & Dekorasi</option>
+                                    <option value="olahraga">Olahraga & Fitness</option>
+                                    <option value="buku">Buku & Edukasi</option>
+                                    <option value="digital">Produk Digital</option>
+                                    <option value="jasa">Layanan Jasa</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Harga Asli <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-dollar-sign input-icon"></i>
+                                <input type="number" id="originalPrice" placeholder="299000">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Harga Diskon</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-percentage input-icon"></i>
+                                <input type="number" id="discountPrice" placeholder="199000">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Deskripsi Produk <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-align-left input-icon" style="top: 1.5rem;"></i>
+                                <textarea id="productDescription" placeholder="Deskripsikan produk Anda dengan detail..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Hijab Section -->
+                    <div class="hijab-section" id="hijabSection">
+                        <h4 class="hijab-title">🧕 Pengaturan Khusus Hijab</h4>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Warna Hijab</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-palette input-icon"></i>
+                                    <select id="hijabColor">
+                                        <option value="">Pilih Warna</option>
+                                        <option value="black">Black</option>
+                                        <option value="white">White</option>
+                                        <option value="navy">Navy</option>
+                                        <option value="brown">Brown</option>
+                                        <option value="grey">Grey</option>
+                                        <option value="custom">Custom (Tambah Warna Sendiri)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Style Hijab</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-tshirt input-icon"></i>
+                                    <select id="hijabStyle">
+                                        <option value="">Pilih Style</option>
+                                        <option value="pashmina">Pashmina</option>
+                                        <option value="segiempat">Segi Empat</option>
+                                        <option value="bergo">Bergo</option>
+                                        <option value="khimar">Khimar</option>
+                                        <option value="ciput">Ciput</option>
+                                        <option value="sport">Hijab Sport</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Color Container -->
+                        <div class="custom-color-container" id="customColorContainer">
+                            <h5 style="margin-bottom: 1.5rem; color: var(--charcoal); font-size: 1.2rem;">Tambah Warna Custom</h5>
+                            <div class="color-input-group">
+                                <div class="form-group">
+                                    <label class="form-label">Nama Warna</label>
+                                    <input type="text" id="customColorName" placeholder="Contoh: Dusty Pink">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Link Gambar Hijab</label>
+                                    <input type="url" id="customColorImage" placeholder="https://example.com/hijab-dusty-pink.jpg">
+                                </div>
+                            </div>
+                            <button type="button" class="add-color-btn" onclick="addCustomColor()">
+                                <i class="fas fa-plus"></i> Tambah Warna
+                            </button>
+                            
+                            <div class="color-list" id="colorList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Visual & Media -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">02</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-image section-icon"></i> Visual & Media</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label class="form-label">Link Gambar Utama <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-image input-icon"></i>
+                                <input type="url" id="mainImage" placeholder="https://example.com/product-image.jpg">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Link Video Demo</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-video input-icon"></i>
+                                <input type="url" id="videoDemo" placeholder="https://youtube.com/watch?v=...">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Galeri Produk (URLs dipisah dengan enter)</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-images input-icon" style="top: 1.5rem;"></i>
+                                <textarea id="productGallery" placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg&#10;https://example.com/image3.jpg"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: OrderOnline Integration -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">03</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-shopping-cart section-icon"></i> OrderOnline Integration</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label class="form-label">Embed Code OrderOnline <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-code input-icon" style="top: 1.5rem;"></i>
+                                <textarea id="orderOnlineEmbed" style="font-family: 'Monaco', monospace;" placeholder="<script src='https://orderonline.id/embed/...'></script>"></textarea>
+                            </div>
+                            <small style="color: var(--slate); margin-top: 0.75rem; display: block;">
+                                <i class="fas fa-info-circle"></i> Copy embed code dari dashboard OrderOnline.id
+                            </small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Nama Toko/Merek <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-store input-icon"></i>
+                                <input type="text" id="storeName" placeholder="Toko Hijab Premium">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Nomor WhatsApp <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fab fa-whatsapp input-icon"></i>
+                                <input type="tel" id="whatsappNumber" placeholder="628123456789">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Design & Style -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">04</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-palette section-icon"></i> Desain & Gaya</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Skema Warna <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-palette input-icon"></i>
+                                <select id="colorScheme">
+                                    <option value="">Pilih Skema Warna</option>
+                                    <option value="luxury">✨ Luxury Black & Gold (Hitam, Arang, Emas, Platinum)</option>
+                                    <option value="ocean">🌊 Ocean Blue (Midnight Blue, Ocean Blue, Sky Blue, Pearl White)</option>
+                                    <option value="royal">👑 Royal Purple (Deep Purple, Royal Purple, Lavender, Silver)</option>
+                                    <option value="sunset">🌅 Sunset Gradient (Deep Orange, Coral, Rose Gold, Cream)</option>
+                                    <option value="mono">⚫ Monochrome Elite (Black, Charcoal, Light Gray, White)</option>
+                                    <option value="rose">🌹 Rose Gold (Deep Rose, Rose Gold, Blush Pink, Ivory)</option>
+                                    <option value="emerald">💎 Emerald Luxury (Forest Green, Emerald, Mint, Gold Accent)</option>
+                                    <option value="sapphire">💙 Sapphire Premium (Navy, Sapphire Blue, Ice Blue, Silver)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Gaya Tata Letak <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-paint-brush input-icon"></i>
+                                <select id="layoutStyle">
+                                    <option value="">Pilih Gaya</option>
+                                    <option value="premium">💎 Ultra Premium Luxury</option>
+                                    <option value="minimalist">⚡ Modern Minimalist</option>
+                                    <option value="islamic">🕌 Islamic Elegant</option>
+                                    <option value="ecommerce">🛒 E-commerce Pro</option>
+                                    <option value="fashion">👗 Fashion Forward</option>
+                                    <option value="tech">💻 Tech & Digital</option>
+                                    <option value="boutique">🏬 Boutique Exclusive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Testimonials (Optional) -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">05</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-comment-alt section-icon"></i> Testimoni Pelanggan (Optional)</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-wrapper">
+                        <label class="toggle-label">Aktifkan Testimoni Pelanggan</label>
+                        <div class="toggle-switch" id="testimonialToggle" onclick="toggleTestimonials()">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonials-section" id="testimonialsSection" style="display: none; margin-top: 2rem;">
+                        <small style="color: var(--slate); margin-bottom: 1.5rem; display: block;">
+                            <i class="fas fa-info-circle"></i> Format: nama|foto_profil|foto_testimoni|testimoni_text
+                        </small>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Testimoni 1</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="testimonial1" placeholder="Nama|URL Foto|URL Foto/Video|Testimoni">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Testimoni 2</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="testimonial2" placeholder="Nama|URL Foto|URL Foto/Video|Testimoni">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Testimoni 3</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="testimonial3" placeholder="Nama|URL Foto|URL Foto/Video|Testimoni">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Testimoni 4</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="testimonial4" placeholder="Nama|URL Foto|URL Foto/Video|Testimoni">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Product Recommendations (Optional) -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">05</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-star section-icon"></i> Rekomendasi Produk (Optional)</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-wrapper">
+                        <label class="toggle-label">Aktifkan Rekomendasi Produk</label>
+                        <div class="toggle-switch" id="recommendationToggle" onclick="toggleRecommendations()">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendations-section" id="recommendationsSection">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Judul Section</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-heading input-icon"></i>
+                                    <input type="text" id="recommendationTitle" value="🛍️ Rekomendasi Lainnya">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Jumlah Produk</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-list-ol input-icon"></i>
+                                    <select id="productCount" onchange="generateProductFields()">
+                                        <option value="3">3 Produk</option>
+                                        <option value="4">4 Produk</option>
+                                        <option value="6">6 Produk</option>
+                                        <option value="8">8 Produk</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="productFields" style="margin-top: 2rem;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7: Social Proof -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">07</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-user-check section-icon"></i> Social Proof System</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <div class="toggle-wrapper">
+                                <label class="toggle-label">Customer Popup Notification</label>
+                                <div class="toggle-switch" id="socialProofToggle">
+                                    <div class="toggle-slider"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8: Target & Marketing -->
+            <div class="form-section-wrapper">
+                <div class="glass-card">
+                    <div class="section-header">
+                        <span class="section-number">06</span>
+                        <div class="section-info">
+                            <h3><i class="fas fa-bullseye section-icon"></i> Target & Pemasaran</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label class="form-label">Target Audiens <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-users input-icon"></i>
+                                <input type="text" id="targetAudience" placeholder="Contoh: Wanita muslimah usia 20-35 tahun yang aktif dan modern">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Unique Selling Point <span class="required">*</span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-star input-icon"></i>
+                                <input type="text" id="uniqueSellingPoint" placeholder="Contoh: Bahan premium dengan teknologi cooling yang nyaman sepanjang hari">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Catatan Tambahan</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-sticky-note input-icon" style="top: 1.5rem;"></i>
+                                <textarea id="additionalNotes" placeholder="Tambahkan informasi atau permintaan khusus lainnya..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <div class="generate-section">
+                <button type="button" class="generate-button" onclick="generatePrompt()">
+                    <i class="fas fa-magic"></i>
+                    <span>Hasilkan Landing Page Premium</span>
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading" id="loadingState">
+                <div class="spinner"></div>
+                <p>Sedang menghasilkan prompt premium...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section class="result-section" id="resultSection">
+        <div class="result-container">
+            <div class="result-header">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2>Prompt Berhasil Dihasilkan!</h2>
+                <p style="color: var(--slate);">Copy prompt di bawah dan paste ke Claude, ChatGPT, atau AI builder favorit Anda</p>
+            </div>
+            
+            <div class="prompt-output">
+                <button class="copy-button" onclick="copyToClipboard()">
+                    <i class="far fa-copy"></i>
+                    <span>Copy Prompt</span>
+                </button>
+                <div class="prompt-content" id="promptContent"></div>
+            </div>
+            
+            <div class="instructions">
+                <div class="instruction-card">
+                    <i class="fas fa-paste instruction-icon"></i>
+                    <h3>Langkah 1</h3>
+                    <p>Copy prompt yang telah dihasilkan dengan klik tombol copy di atas</p>
+                </div>
+                
+                <div class="instruction-card">
+                    <i class="fas fa-robot instruction-icon"></i>
+                    <h3>Langkah 2</h3>
+                    <p>Buka Claude, ChatGPT, atau AI builder pilihan Anda</p>
+                </div>
+                
+                <div class="instruction-card">
+                    <i class="fas fa-code instruction-icon"></i>
+                    <h3>Langkah 3</h3>
+                    <p>Paste prompt dan tunggu AI menghasilkan landing page premium Anda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
+        <span id="close-lightbox" style="position:absolute; top:20px; right:20px; color:white; font-size:30px; cursor:pointer;">&times;</span>
+        <img id="lightbox-img" style="max-height:80vh; max-width:90vw;">
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i> <span id="toastMessage">Berhasil!</span>
+    </div>
+
+    <script>
+        // Custom color management
+        let customColors = [];
+
+        // Category change handler
+        document.getElementById('productCategory').addEventListener('change', function() {
+            const hijabSection = document.getElementById('hijabSection');
+            if (this.value === 'hijab') {
+                hijabSection.classList.add('active');
+            } else {
+                hijabSection.classList.remove('active');
+            }
+        });
+
+        // Hijab color change handler
+        document.getElementById('hijabColor').addEventListener('change', function() {
+            const customColorContainer = document.getElementById('customColorContainer');
+            if (this.value === 'custom') {
+                customColorContainer.classList.add('active');
+            } else {
+                customColorContainer.classList.remove('active');
+            }
+        });
+
+        // Add custom color function
+        function addCustomColor() {
+            const colorName = document.getElementById('customColorName').value.trim();
+            const colorImage = document.getElementById('customColorImage').value.trim();
+            
+            if (!colorName || !colorImage) {
+                showToast('Mohon isi nama warna dan link gambar');
+                return;
+            }
+            
+            // Validate URL
+            try {
+                new URL(colorImage);
+            } catch (e) {
+                showToast('Link gambar tidak valid');
+                return;
+            }
+            
+            const colorData = {
+                id: Date.now(),
+                name: colorName,
+                image: colorImage
+            };
+            
+            customColors.push(colorData);
+            renderColorList();
+            
+            // Clear inputs
+            document.getElementById('customColorName').value = '';
+            document.getElementById('customColorImage').value = '';
+            
+            showToast('Warna berhasil ditambahkan');
+        }
+
+        // Render color list
+        function renderColorList() {
+            const colorList = document.getElementById('colorList');
+            colorList.innerHTML = '';
+            
+            customColors.forEach(color => {
+                const colorItem = document.createElement('div');
+                colorItem.className = 'color-item';
+                colorItem.innerHTML = `
+                    <div style="display: flex; align-items: center; flex: 1;">
+                        <div class="color-preview" style="background-image: url('${color.image}'); background-size: cover; background-position: center;"></div>
+                        <div class="color-info">
+                            <div class="color-name">${color.name}</div>
+                            <div class="color-image-url">${color.image}</div>
+                        </div>
+                    </div>
+                    <button class="remove-color-btn" onclick="removeColor(${color.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                colorList.appendChild(colorItem);
+            });
+        }
+
+        // Remove color
+        function removeColor(id) {
+            customColors = customColors.filter(color => color.id !== id);
+            renderColorList();
+            showToast('Warna berhasil dihapus');
+        }
+
+        // Toggle testimonials
+        function toggleTestimonials() {
+            const toggle = document.getElementById('testimonialToggle');
+            const section = document.getElementById('testimonialsSection');
+            
+            toggle.classList.toggle('active');
+            section.style.display = toggle.classList.contains('active') ? 'block' : 'none';
+        }
+
+        // Toggle recommendations
+        function toggleRecommendations() {
+            const toggle = document.getElementById('recommendationToggle');
+            const section = document.getElementById('recommendationsSection');
+            
+            toggle.classList.toggle('active');
+            section.classList.toggle('active');
+            
+            if (toggle.classList.contains('active')) {
+                generateProductFields();
+            }
+        }
+
+        // Generate product fields
+        function generateProductFields() {
+            const count = parseInt(document.getElementById('productCount').value);
+            const container = document.getElementById('productFields');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= count; i++) {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-header">
+                        <h4>Produk ${i}</h4>
+                        <span class="product-number">#${i}</span>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Nama Produk</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-tag input-icon"></i>
+                                <input type="text" id="recProduct${i}Name" placeholder="Nama produk rekomendasi">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Harga</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-dollar-sign input-icon"></i>
+                                <input type="number" id="recProduct${i}Price" placeholder="199000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Link Landing Page</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-link input-icon"></i>
+                                <input type="url" id="recProduct${i}Link" placeholder="https://example.com/product">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Link Gambar</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-image input-icon"></i>
+                                <input type="url" id="recProduct${i}Image" placeholder="https://example.com/image.jpg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Badge</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-certificate input-icon"></i>
+                                <select id="recProduct${i}Badge">
+                                    <option value="">Tanpa Badge</option>
+                                    <option value="stok-menipis">Stok Menipis</option>
+                                    <option value="best-seller">Best Seller</option>
+                                    <option value="new">New</option>
+                                    <option value="diskon">Diskon</option>
+                                    <option value="limited">Limited</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            }
+        }
+
+        // Form validation
+        function validateForm() {
+            const required = [
+                'productName',
+                'productCategory',
+                'originalPrice',
+                'productDescription',
+                'mainImage',
+                'orderOnlineEmbed',
+                'storeName',
+                'whatsappNumber',
+                'colorScheme',
+                'layoutStyle',
+                'targetAudience',
+                'uniqueSellingPoint'
+            ];
+            
+            for (let field of required) {
+                const element = document.getElementById(field);
+                if (!element.value.trim()) {
+                    element.focus();
+                    showToast('Mohon lengkapi semua field yang wajib diisi');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        // Generate prompt
+        function generatePrompt() {
+            if (!validateForm()) return;
+            
+            // Show loading
+            document.getElementById('loadingState').classList.add('active');
+            
+            // Collect form data
+            const formData = {
+                productName: document.getElementById('productName').value,
+                productCategory: document.getElementById('productCategory').value,
+                originalPrice: document.getElementById('originalPrice').value,
+                discountPrice: document.getElementById('discountPrice').value,
+                productDescription: document.getElementById('productDescription').value,
+                mainImage: document.getElementById('mainImage').value,
+                videoDemo: document.getElementById('videoDemo').value,
+                productGallery: document.getElementById('productGallery').value,
+                orderOnlineEmbed: document.getElementById('orderOnlineEmbed').value,
+                storeName: document.getElementById('storeName').value,
+                whatsappNumber: document.getElementById('whatsappNumber').value,
+                colorScheme: document.getElementById('colorScheme').value,
+                layoutStyle: document.getElementById('layoutStyle').value,
+                targetAudience: document.getElementById('targetAudience').value,
+                uniqueSellingPoint: document.getElementById('uniqueSellingPoint').value,
+                additionalNotes: document.getElementById('additionalNotes').value
+            };
+            
+            // Add hijab specific data if category is hijab
+            if (formData.productCategory === 'hijab') {
+                formData.hijabColor = document.getElementById('hijabColor').value;
+                formData.hijabStyle = document.getElementById('hijabStyle').value;
+                formData.customColors = customColors;
+            }
+            
+            // Add testimonials if enabled
+            const testimonialToggle = document.getElementById('testimonialToggle');
+            if (testimonialToggle.classList.contains('active')) {
+                formData.testimonials = [];
+                for (let i = 1; i <= 4; i++) {
+                    const testimonial = document.getElementById(`testimonial${i}`).value;
+                    if (testimonial) {
+                        formData.testimonials.push(testimonial);
+                    }
+                }
+            }
+
+            // Add social proof if enabled
+            const socialProofToggle = document.getElementById('socialProofToggle');
+            if (socialProofToggle.classList.contains('active')) {
+                formData.socialProof = true;
+            }
+
+            // Add recommendations if enabled
+            const recommendationToggle = document.getElementById('recommendationToggle');
+            if (recommendationToggle.classList.contains('active')) {
+                formData.recommendationTitle = document.getElementById('recommendationTitle').value;
+                formData.productCount = document.getElementById('productCount').value;
+                formData.recommendations = [];
+                
+                for (let i = 1; i <= parseInt(formData.productCount); i++) {
+                    const product = {
+                        name: document.getElementById(`recProduct${i}Name`).value,
+                        price: document.getElementById(`recProduct${i}Price`).value,
+                        link: document.getElementById(`recProduct${i}Link`).value,
+                        image: document.getElementById(`recProduct${i}Image`).value,
+                        badge: document.getElementById(`recProduct${i}Badge`).value
+                    };
+                    if (product.name) {
+                        formData.recommendations.push(product);
+                    }
+                }
+            }
+            
+            // Generate the prompt
+            const prompt = generatePromptText(formData);
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                document.getElementById('loadingState').classList.remove('active');
+                document.getElementById('promptContent').textContent = prompt;
+                document.getElementById('resultSection').classList.add('active');
+                
+                // Scroll to result
+                document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+                
+                // Show success effect
+                showCelebration();
+            }, 2500);
+        }
+
+        // Generate prompt text
+        function generatePromptText(data) {
+            const colorSchemes = {
+                'luxury': 'Hitam Midnight (#0a0a0a), Charcoal (#1a1a1a), Gold Luxury (#c9a96e), Platinum (#e8e8e8), Aksen White (#ffffff)',
+                'ocean': 'Midnight Blue (#003366), Ocean Blue (#0066cc), Sky Blue (#87ceeb), Pearl White (#f0f8ff), Aksen Silver (#c0c0c0)',
+                'royal': 'Deep Purple (#4b0082), Royal Purple (#6a0dad), Lavender (#e6e6fa), Silver (#c0c0c0), Aksen Gold (#ffd700)',
+                'sunset': 'Deep Orange (#ff4500), Coral (#ff7f50), Rose Gold (#e8b4b8), Cream (#f5f5dc), Aksen Pink (#ffc0cb)',
+                'mono': 'Black (#000000), Charcoal (#36454f), Light Gray (#d3d3d3), White (#ffffff), Aksen Platinum (#e5e4e2)',
+                'rose': 'Deep Rose (#
+</body>
+</html>
